@@ -8,14 +8,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ShoppingOnline Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+
+	<properties>
+		<spring.version>4.3.7.RELEASE</spring.version>
+	</properties>
 	<build>
 		<finalName>ShoppingOnline</finalName>
 		<plugins>
@@ -31,6 +27,74 @@
 				</configuration>
 			</plugin>
 		</plugins>
-
 	</build>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- 包含Spring框架基础的核心工具类，Spring其他组件都要使用到这个包里的类 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- 这个JAR包是所有应用都用到，它包含访问配置文件、创建和管理bean以及进行IOC\DI操作相关的所有类，如果应用只需要基础的IOC\DI支持，引用spirng-core.jar和spring-bean.jar文件就可以了 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- 这个JAR文件为Spring核心提供大量扩展，可以找到使用Spring ApplicationContext特性时所需的全部类，instrumentation组件以及校验Validation方法相关的类 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- 这个JAR包包含Spring对JDBC数据访问进行封装的所有类 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- 这个JAR包为JDBC、Hebernate、JDO、MyBatis等提供一致的声明式和编程式事务管理 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- 该JAR包包含Web应用开发时，用到Spring框架时所需的核心类，包括自动载入WebApplicationContextt特性的类、struts与jsf集成类、文件上传的支持类、filter类和大量工具辅助类 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- 该JAR包包含SpringMVC框架相关的所有类 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- Spring test对JUNIT等测试框架的简单封装 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Servlet Web -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<!-- json解析 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.8.7</version>
+		</dependency>
+	</dependencies>
 </project>
