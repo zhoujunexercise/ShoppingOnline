@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd 
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!--配置SpringMVC -->
+	<!-- 1、开启SpringMVC注解模式 -->
+	<mvc:annotation-driven />
+	<!-- 2、静态资源默认servlet配置,告知servlet对webapp下的资源不做拦截，统一交给default-servlet-handle来处理，可供用户访问.
+		(1)加入对静态资源的处理：js,gif,png
+		(2)允许使用“/”做整体映射
+	 -->
+	 <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	 <mvc:default-servlet-handler/>
+	 
+	 <!-- 3、定义视图解析器,
+	  	  (1)Spring MVC默认用户无法对WEB-INF下的资源进行访问， 本系统用户通过对Controller的访问，系统来访问/WEB-INF/html/下的资源，将结果返回给用户
+	 	  (2)本系统将自页面展示只使用html，不使用JSP,故将返回页面的后缀定义为html
+	 -->
+	 <bean id="viewReslover" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	 	<property name="prefix" value="/WEB-INF/html/"></property>
+	 	<property name="suffix" value=".html"></property>
+	 </bean>
+	 
+	<context:component-scan base-package="com.sang.o2o.controller"></context:component-scan>
+</beans>
+
