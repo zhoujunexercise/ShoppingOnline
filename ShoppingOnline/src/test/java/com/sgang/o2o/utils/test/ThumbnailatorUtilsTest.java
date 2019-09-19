@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import com.sgang.o2o.enums.ShopStateEnum;
+
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 
@@ -66,34 +68,52 @@ public class ThumbnailatorUtilsTest {
 				.size(200, 300).rotate(180)
 				.toFile("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\111_04.bmp");
 
-		
-		
 		/**
 		 * 对图片加水印.
 		 * <p>
-		 * watermark(位置，水印图,透明度).
-		 * outputQuality(图片质量):输出图片质量，范围0.0~1.0,1为最高质量.
+		 * watermark(位置，水印图,透明度). outputQuality(图片质量):输出图片质量，范围0.0~1.0,1为最高质量.
 		 * 
 		 * 
 		 */
 		Thumbnails.of("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\111.bmp")
 				.size(200, 300)
-				.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(
-						 new File("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\watermark.bmp")),
-						0.5f).outputQuality(0.8f).toFile("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\111_05.bmp");
-		
-		
-		
+				.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(
+						"C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\watermark.bmp")),
+						0.5f)
+				.outputQuality(0.8f)
+				.toFile("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\111_05.bmp");
+
 		/**
-		 *对图片进行裁剪. 
+		 * 对图片进行裁剪.
 		 * <p>
-		 * 
+		 * sourceRegion()
 		 * 
 		 * 
 		 */
-		
-		
-		
+		// 图片中心100*100的区域
+		Thumbnails.of("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\111.bmp")
+				.sourceRegion(Positions.CENTER, 100, 100).size(50, 50).keepAspectRatio(false)
+				.toFile("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\111_06.bmp");
+		// 图片右下角100*100的区域
+		Thumbnails.of("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\111.bmp")
+				.sourceRegion(Positions.BOTTOM_RIGHT, 100, 100).size(50, 50).keepAspectRatio(false)
+				.toFile("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\111_07.bmp");
+		// 指定坐标
+		Thumbnails.of("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\111.bmp")
+				.sourceRegion(30, 50, 100, 100).size(50, 50).keepAspectRatio(false)
+				.toFile("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\111_08.bmp");
+
+		/***
+		 * 转化图片格式. 
+		 * <p>
+		 * outputFormat(图像格式)
+		 * 
+		 * 
+		 */
+		Thumbnails.of("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\111.bmp")
+				.size(150, 150).outputFormat("jpg")
+				.toFile("C:\\Users\\zj\\git\\ShoppingOnline\\ShoppingOnline\\src\\test\\resources\\image\\111_09.jpg");
+
 
 	}
 
