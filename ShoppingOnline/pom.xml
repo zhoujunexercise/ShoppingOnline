@@ -32,7 +32,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- 包含Spring框架基础的核心工具类，Spring其他组件都要使用到这个包里的类 -->
@@ -96,6 +96,35 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.8.7</version>
 		</dependency>
+		<!-- Map工具类，对标准java collection的扩展 spring-core.jar需要commons-collections.jar -->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.2</version>
+		</dependency>
+		<!-- DAO:MyBatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+		<!-- mysql数据库 -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.17</version>
+		</dependency>
+		<!-- 数据库连接池-->
+		<dependency>
+    <groupId>com.mchange</groupId>
+    <artifactId>c3p0</artifactId>
+    <version>0.9.5.4</version>
+</dependency>
 
 		<!-- 图片处理 -->
 		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
@@ -105,7 +134,7 @@
 			<version>0.4.8</version>
 		</dependency>
 
-	<!-- The Simple Logging Facade for java,slf4j定义一系列日志的接口，log4j和logback是具体实现了的日志框架，本项目使用logback进行日志输出 -->
+		<!-- The Simple Logging Facade for java,slf4j定义一系列日志的接口，log4j和logback是具体实现了的日志框架，本项目使用logback进行日志输出 -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
