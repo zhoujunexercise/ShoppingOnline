@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+       <!-- 1.开启SpringMVC注解类，即将Controller类使用注解进行声明 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<!-- 2.DispatcherServlet不要拦截resources开头的所有请求路径，并将他们作为静态资源交由Servlet进行处理。/resources/下主要存放静态资源：js,gif,png等 -->
+	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	
+	<!-- 静态资源默认servlet配置 -->
+	<mvc:default-servlet-handler/>
+	
+	<!-- 3.定义视图解析器 ,默认情况下用户无法访问通过url直接访问/WEB-INF/下的资源，保证了安全性。
+	程序内部是可以访问/WEB-INF/下的资源，我们请求一个Controller,再有Controller分发到/WEB-INF/html下的页面.
+	本项目只使用html与用户进行交互。
+	-->
+	<bean id ="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/WEB-INF/html"></property>
+		<property name="suffix" value=".html"></property>
+	</bean>
+	
+	<!-- 4.扫描Controller相关的bean -->
+	<context:component-scan base-package="com.sgang.o2o.controller"></context:component-scan>
+</beans>
